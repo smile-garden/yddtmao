@@ -1,0 +1,183 @@
+@mixin juzhong{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+%juzhong{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@mixin  zuoyou{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@mixin shangxia{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@mixin  fang($size){
+  width: $size;
+  height: $size;
+}
+
+@mixin  yuan($size){
+  @include fang($size);
+  border-radius: 50%;
+  border: 1px solid #000000;
+}
+
+@mixin box($size){
+  @include fang($size);
+  border-radius: 10px;
+  border: 1px solid #000000;
+}
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+@mixin fenbianlv($bian){
+  //$fenbian:1080px,540px,480px,414px,412px,385px,375px,360px,320px;
+  $fenbian:320px,360px,375px,385px,412px,414px,480px,540px,1080px;
+  @each $size in $fenbian{
+    @media screen and(min-width: $size){
+      font-size: 100px*$size/$bian}
+  }
+}
+
+@mixin zhongjianbiaoti($color,$tu){
+  width: 100%;
+  height: 0.9rem;
+  background: #f0f0f0;
+  position: relative;
+  .pinpaitemai-box{
+    width: 4.87rem;
+    height: 0.46rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    .biqiang-zuo{
+      width: 1.03rem;
+      height: 0.03rem;
+      background: $color;
+      margin-top: 0.23rem;
+      float: left;
+    }
+    .biqiang-you{
+      width: 1.03rem;
+      height: 0.03rem;
+      background: $color;
+      margin-top: 0.23rem;
+      float: right;
+    }
+    .pinpaitemai-zhong{
+      width: 2.21rem;
+      height: 0.46rem;
+      float: left;
+      margin-left: 0.31rem;
+      .biqiang-tubiao{
+        width: 0.46rem;
+        height: 0.46rem;
+        background: url($tu) no-repeat;
+        background-size: contain;
+        background-position: center;
+        float: left;
+      }
+      .pinpaitemai-nei{
+        height: 100%;
+        color: $color;
+        font-size: 0.23rem;
+        float: right;
+      }
+    }
+  }
+}
+
+body{
+  font-family: "Helvetica Neue","微软雅黑",sans-serif;
+  font-size: 16px;
+  font-weight:100;
+}
+
+@mixin fudong{
+  &::after{
+    content: "";
+    width: 100%;
+    height:0;
+    display: inline-block;
+    overflow: hidden;
+  }
+}
+
+@mixin biaoti($boxkuan){
+    width: 100%;
+    height: $boxkuan;
+    .cu{
+      display: block;
+      height: ($boxkuan/2)+rem;
+      font-size: 0.16rem;
+      line-height: ($boxkuan/2)+rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    .xi{
+      display: block;
+      height: ($boxkuan/2)+rem;
+      font-size: 0.16rem;
+      text-align: center;
+      color: #9a9a9a;
+    }
+
+}
+@mixin biaotizuo($boxkuan){
+  width: 100%;
+  height: $boxkuan;
+  .shang{
+    display: block;
+    height: ($boxkuan/2)+rem;
+    font-size: 0.16rem;
+    line-height: ($boxkuan/2)+rem;
+  }
+  .xia{
+    display: block;
+    height: ($boxkuan/2)+rem;
+    font-size: 0.16rem;
+    color: #9a9a9a;
+  }
+
+}
+
+@font-face {
+  font-family: "daohangzuo";
+  src: url("../icon/iconfont.woff");
+}
+.icon-font{
+  font-family: "daohangzuo" !important;
+}
+.icon-plus:before { content: "\e659"; }
+
+@mixin fangtu($tu){
+  background: url($tu) no-repeat;
+  background-size: contain;
+  background-position: center;
+}
